@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+layout:decorate="layout">
+<head>
+<meta charset="utf-8" />
+<title>Production</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div layout:fragment="content">
+<div class="col-md-12" style="bottom: 35px;">
+<div class="box-header">
+<h1 style=" margin-left: 1450px;" >Production</h1>
+
+
+</div>
+<div class="box-body">
+
+<div class="nav-tabs-custom">
+<ul class="nav nav-tabs">
+<li class="active"><a href="#tab_1" data-toggle="tab" id="overview">Overview</a></li>
+<li ><a href="#tab_2" data-toggle="tab" id="add_new">Add New</a></li>
+<li ><a  href="#tab_3" data-toggle="tab" id="add_line">Production Line</a></li>
+</ul>
+<div class="tab-content">
+
+
+<span th:replace="inventory/modal_inventory"/>
+
+<div class="tab-pane active" id="tab_1">
+<div class='box-body pad'>
+<div class="panel panel-default">
+<button class="btn btn-info btn-lg" type="button" id="line" style="">Add Line</button>
+<button class="btn btn-warning btn-lg" type="button" id="new" style="">Add New production</button>
+<table id="tabel_produksi" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>id_production</th>
+            <th>id_inventory</th>
+            <th>batch_number</th>
+            <th>product_ref</th>
+            <th>product_name</th>
+            <th>production_order</th>
+            <th>production_date</th>
+            <th>note</th>
+        </tr>
+        </thead>
+</table>
+</div>
+<div class="panel panel-default">
+    <h2>Production Line</h2>
+    <div class="box-body"  id="ProduksiViewContainers" >
+        <div class="col-xs-1" hidden>
+        <label class="Mattlabel" for="nama">id_production</label>
+        <input type="text" class="form-control"  id="id_production" name="id_production"  readonly/>
+        </div>
+        <div class="col-xs-1" hidden>
+        <label class="Mattlabel" for="nama">id_inventory</label>
+        <input type="text" class="form-control"  id="id_inventory" name="id_inventory"  readonly/>
+        </div>
+        
+        <div class="col-xs-2">
+        <label class="Mattlabel" for="nama">batch_number </label>
+        <input type="text" class="form-control"  name="batch_number" id="batch_number"  placeholder=" " readonly/>
+        </div>
+        
+        
+        <div class="col-xs-2">
+            <label class="Mattlabel" for="nama">product_ref</label>
+            <div class="input-group">
+                <div class="input-group-addon">
+                    <i class="fa fa-id-card"></i>
+                </div>
+                <input type="text" class="form-control"  name="product_ref" id="product_ref"  placeholder=" " readonly/>
+                
+            </div>
+        </div>
+        
+        <div class="col-xs-2">
+        <label  class="Mattlabel" for="nama">product_name </label>
+        <input type="text" class="form-control"  name="product_name" id="product_name"  placeholder=" " readonly/>
+        </div>
+        <div class="col-xs-2">
+        <label  class="Mattlabel" for="nama">production_order </label>
+        <input type="text" class="form-control"  name="production_order" id="production_order"  placeholder=" " readonly/>
+        </div>
+        
+        <div class="col-xs-2">
+        <label  class="Mattlabel" for="nama">production_date </label>
+        <input type="text" class="form-control"  name="production_date" id="production_date"  placeholder="YYYY-MM-DD " readonly/>
+        </div>
+        
+        
+        <div class="col-xs-2">
+        <label class="Mattlabel" for="nama">note</label>
+        <input type="text" class="form-control"   id="note" name="note" placeholder=" " readonly/>
+        </div>
+        
+        </div>
+    <table id="tabel_produksi_line" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>id_production_line</th>
+                <th>id_production</th>
+                <th>id_inventory</th>
+                <th>Batch_number</th>
+                <th>Batch_Order</th>
+                <th>Product_Ref</th>
+                <th>Product_name</th>
+                <th>Production_Qty</th>
+            </tr>
+            </thead>
+    </table>
+    </div>
+</div>
+</div>
+<div class="tab-pane" id="tab_2">
+    <div class="btn-group-horizontal" style="margin-left: 1400px;margin-top: -52px;">
+        <button style="width: 50px;    background-color: #f39c12;border-color: #f39c12;" class="btn btn-danger btn-lg" id="copy"   type="button" ><b class="glyphicon glyphicon-copy"></b> </button>
+        <button style="width: 50px;    background-color: #c42e13;border-color: #c42e13;" class="btn btn-danger btn-lg" id="rmvprd1"   type="button" ><b class="glyphicon glyphicon-trash"></b> </button>
+        <button style="width: 50px;    background-color: #1182e4;border-color: #1182e4;" class="btn btn-danger btn-lg" id="prd1"   type="button" ><b class="glyphicon glyphicon-floppy-disk"></b> </button>
+        </div>
+<form data-toggle="validator" role="form" id="form_produksi" name="form_produksi" method="post" style="">
+<div class="box-body"  id="ProduksiContainers" >
+<div class="col-xs-1" hidden>
+<label class="Mattlabel" for="nama">id_production</label>
+<input type="text" class="form-control"  id="id_production" name="id_production"  readonly/>
+</div>
+<div class="col-xs-1" hidden>
+<label class="Mattlabel" for="nama">id_inventory</label>
+<input type="text" class="form-control"  id="id_inventory" name="id_inventory"  />
+</div>
+
+<div class="col-xs-2">
+<label class="Mattlabel" for="nama">batch_number </label>
+<input type="text" class="form-control"  name="batch_number" id="batch_number"  placeholder=" "/>
+</div>
+
+
+<div class="col-xs-2">
+    <label class="Mattlabel" for="nama">product_ref</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-id-card"></i>
+        </div>
+        <input type="text" class="form-control"  name="product_ref" id="product_ref"  placeholder=" "/>
+        <span class="input-group-btn">
+<button class="btn btn-info btn-flat" type="button" data-target="#modal_inventory" data-toggle="modal">Select</button>
+</span>
+    </div>
+</div>
+
+<div class="col-xs-2">
+<label  class="Mattlabel" for="nama">product_name </label>
+<input type="text" class="form-control"  name="product_name" id="product_name"  placeholder=" "/>
+</div>
+<div class="col-xs-2">
+<label  class="Mattlabel" for="nama">production_order </label>
+<input type="text" class="form-control"  name="production_order" id="production_order"  placeholder=" "/>
+</div>
+
+<div class="col-xs-2">
+<label  class="Mattlabel" for="nama">production_date </label>
+<input type="text" class="form-control"  name="production_date" id="production_date"  placeholder="YYYY-MM-DD "/>
+</div>
+
+
+<div class="col-xs-2">
+<label class="Mattlabel" for="nama">note</label>
+<input type="text" class="form-control"   id="note" name="note" placeholder=" "/>
+</div>
+
+</div>
+</form>
+
+</div>
+<div class="tab-pane" id="tab_3">
+    <div class="btn-group-horizontal" style="margin-left: 1400px;margin-top: -52px;">
+    <button style="width: 50px;    background-color: #f39c12;border-color: #f39c12;" class="btn btn-danger btn-lg" id="copy_line"   type="button" ><b class="glyphicon glyphicon-copy"></b> </button>
+    <button style="width: 50px;    background-color: #c42e13;border-color: #c42e13;" class="btn btn-danger btn-lg" id="rmvprdl1"   type="button" ><b class="glyphicon glyphicon-trash"></b> </button>
+    <button style="width: 50px;    background-color: #1182e4;border-color: #1182e4;" class="btn btn-danger btn-lg" id="prdl1"   type="button" ><b class="glyphicon glyphicon-floppy-disk"></b> </button>
+    </div>
+<form data-toggle="validator" role="form" id="form_produksi_line" name="form_produksi_line" method="post" style="">
+<div class="box-body"  id="ProduksiLineContainers">
+    <div class="col-xs-1" hidden>
+        <label class="Mattlabel" for="nama">id_production_line</label>
+        <input type="text" class="form-control"  id="id_production_line" name="id_production_line"  readonly/>
+        </div>
+    <div class="col-xs-1" hidden>
+        <label class="Mattlabel" for="nama">id_production</label>
+        <input type="text" class="form-control"  id="id_production_ln" name="id_production_ln"  readonly/>
+        </div>
+<div class="col-xs-1" hidden>
+<label class="Mattlabel" for="nama">id_inventory</label>
+<input type="text" class="form-control"  id="id_inventory_ln" name="id_inventory_ln"  />
+</div>
+<div class="col-xs-2">
+    <label  class="Mattlabel" for="nama">batch_number </label>
+    <input type="text" class="form-control"  name="batch_number_ln" id="batch_number_ln"  placeholder=" " readonly/>
+</div>
+<div class="col-xs-2">
+    <label  class="Mattlabel" for="nama">batch_order </label>
+    <input type="text" class="form-control"  name="batch_order_ln" id="batch_order_ln"  placeholder=" " />
+</div>
+
+<div class="col-xs-3">
+    <label class="Mattlabel" for="nama">product_ref</label>
+    <div class="input-group">
+        <div class="input-group-addon">
+            <i class="fa fa-id-card"></i>
+        </div>
+        <input type="text" class="form-control"  name="product_ref_ln" id="product_ref_ln"  placeholder=" "/>
+        <span class="input-group-btn">
+<button class="btn btn-info btn-flat" type="button" data-target="#modal_inventory" data-toggle="modal">Select</button>
+</span>
+    </div>
+</div>
+
+
+<div class="col-xs-3">
+    <label class="Mattlabel" for="nama">product_name </label>
+    <input type="text" class="form-control"  name="product_name_ln" id="product_name_ln"  placeholder=" " readonly/>
+</div>
+<div class="col-xs-2">
+    <label class="Mattlabel" for="nama">production_qty </label>
+    <input type="text" class="form-control"  name="production_qty_ln" id="production_qty_ln"  placeholder=" "/>
+</div>
+
+
+
+</div>
+</form>
+<button type="button" class="btn btn-block btn-danger btn-lg" style="width: 25%;margin-left: 550px;" id="copy_l"><i class="fa fa-fw fa-plus"></i>  Add New Line</button>  
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+//    $('#tambah').click(function()
+//    {
+//     $( "#nama_komponen" ).clone().appendTo('body');
+// }   
+//  );
+
+
+
+</script>
+
+
+</body>
+
+</html>

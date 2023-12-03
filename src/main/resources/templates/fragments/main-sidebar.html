@@ -1,0 +1,93 @@
+<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar">
+<!-- Sidebar users panel -->
+<div class="users-panel">
+<div class="pull-left info">
+<a href="#"></a>
+</div>
+</div>
+<!-- search form -->
+
+<!-- /.search form -->
+<!-- sidebar menu: : style can be found in sidebar.less -->
+<ul class="sidebar-menu" background-color="#3c8dbc" data-widget="tree" data-api="tree" data-accordion=0>
+<li class="header" ></li>
+<li class="active treeview" hidden>
+<a href="#">
+<i class="fa   fa-folder"></i> <span>Data Master</span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
+</a>
+<ul class="treeview-menu" style="display: block" >
+<li class="active"><a th:href="@{~/asset}"><i class="fa fa-cubes"></i> Master Asset</a></li>
+<li><a th:href="@{~/spare_part}"><i class="fa  fa-cubes"></i>Master Spare Part</a></li>
+<li><a th:href="@{~/PM}"><i class="fa  fa-gear"></i> Preventive Maintenance</a></li>
+<li><a th:href="@{~/Departemen}"><i class="fa  fa-cubes"></i> Master Departemen</a></li>
+<li><a th:href="@{~/dashboard/index2.html}"><i class="fa fa-envelope"></i> Master User</a></li>
+</ul>
+</li>
+
+<li class="active treeview" background-color="#3c8dbc" >
+<a href="#">
+<i class="fa fa-send-o"></i> <span>Master Data</span>
+<span class="pull-right-container">
+<i class="fa fa-angle-left pull-right"></i>
+</span>
+</a>
+<ul class="treeview-menu" style="display: block" >
+    <ul class="control-sidebar-menu">
+    <li>
+    <li>
+    
+    <a th:href="@{~/inventory}">
+    <i class="menu-icon fa fa-cubes bg-light-blue"></i>
+    <div>
+    <h4 class="control-sidebar-subheading">  Inventory</h4>
+    </div>
+    </a>
+    
+    </li>
+    <li>
+    
+    <a th:href="@{~/adjustment}">
+    <i class="menu-icon fa fa-gear bg-light-blue"></i>
+    <div>
+    <h4 class="control-sidebar-subheading">  Adjustment</h4>
+    </div>
+    </a>
+    </li>
+
+    <li>
+    <a th:href="@{~/production}">
+    <i class="menu-icon fa fa-gear bg-light-blue"></i>
+    <div>
+    <h4 class="control-sidebar-subheading">  Production </h4>
+    </div>
+    </a>
+    </li>
+    </ul>
+</ul>
+</li>
+
+
+</ul>
+
+
+
+
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+
+
+
+
+
+
+</section>
+<!-- /.sidebar -->

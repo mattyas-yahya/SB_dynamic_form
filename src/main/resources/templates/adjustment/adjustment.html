@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+layout:decorate="layout">
+<head>
+<meta charset="utf-8" />
+<title>Adjustment</title>
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+
+<div layout:fragment="content">
+<div class="col-md-12" style="bottom: 35px;">
+<div class="box-header">
+<h1 style=" margin-left: 1450px;">Adjustment</h1>
+
+
+</div>
+<div class="box-body">
+
+<div class="nav-tabs-custom">
+<ul class="nav nav-tabs">
+<li class="active"><a href="#tab_1" data-toggle="tab">Overview</a></li>
+<li ><a href="#tab_2" id="" data-toggle="tab">Add New</a></li>
+
+</ul>
+<div class="tab-content">
+
+
+<span th:replace="inventory/modal_inventory"/>
+
+<div class="tab-pane active" id="tab_1">
+<div class='box-body pad'>
+<div class="panel panel-default">
+<table id="tabel_adjustment" class="table table-striped table-bordered table-hover"  cellspacing="0"
+width="100%" role="grid" aria-describedby="example_info"
+style="width: 100%;">
+<thead>
+<tr>
+<th>id_adjustment</th>
+<th>id_inventory  </th>
+<th>item_number</th>
+<th>product_ref</th>
+<th> product_name  </th>
+<th> adjustment_date  </th>
+<th> begin_balance  </th>
+<th> adjustment  </th>
+<th> location  </th>
+<th> purchase_price </th>
+
+</tr>
+</thead>
+</table>
+
+<!-- <table id="tabel_adjustment" class="display" style="width:100%"></table> -->
+
+</div>
+</div>
+</div>
+<div class="tab-pane" id="tab_2">
+    <div class="btn-group-horizontal" style="margin-left: 1400px;margin-top: -52px;">
+        <button style="width: 50px;    background-color: #f39c12;border-color: #f39c12;" class="btn btn-danger btn-lg" id="cug"   type="button" ><b class="glyphicon glyphicon-copy"></b> </button>
+        <button style="width: 50px;    background-color: #c42e13;border-color: #c42e13;" class="btn btn-danger btn-lg" id="remove"   type="button" ><b class="glyphicon glyphicon-trash"></b> </button>
+        <button style="width: 50px;    background-color: #1182e4;border-color: #1182e4;" class="btn btn-danger btn-lg" id="adj1"   type="button" ><b class="glyphicon glyphicon-floppy-disk"></b> </button>
+        </div>
+          <form data-toggle="validator" role="form" id="form_adjustment" name="form_adjustment" method="post" >
+<div  id="AdjustmentContainer" >
+<table class="table table-striped table-bordered table-hover" >
+    <tr hidden>
+        <td> <div class="form-group" hidden>
+            <label class="Mattlabel"for="nama">id_adjustment</label>
+            <input type="text" class="form-control"  id="id_adjustment" name="id_adjustment" readonly hidden />
+        </div></td>
+    </tr>
+    <tr>
+    <tr hidden>
+    <td> <div class="form-group" hidden>
+        <label class="Mattlabel"for="nama">id_inventory</label>
+        <input type="text" class="form-control"  id="id_inventory" name="id_inventory" readonly />
+    </div></td>
+</tr>
+<tr>
+
+<td>
+    <!-- <div class="form-group">
+           <label class="Mattlabel"class="text-red" for="nama">item_number </label>
+           <div class="input-group">
+            <div class="input-group-addon">
+           <input type="text" class="form-control"  name="item_number" id="item_number"  placeholder=" "/>
+           <span class="input-group-btn">
+            <button class="btn btn-info btn-flat" type="button" data-target="#modal_inventory" data-toggle="modal">Select</button>
+            </span>
+            </div>
+            </div>
+        </div> -->
+        <div class="form-group">
+            <label class="Mattlabel"for="nama">item_number</label>
+            <div class="input-group">
+            <div class="input-group-addon">
+            <i class="fa fa-id-card"></i>
+            </div>
+            <input type="text" class="form-control" id="item_number" name="item_number" />
+            <span class="input-group-btn">
+            <button class="btn btn-info btn-flat" type="button" data-target="#modal_inventory" data-toggle="modal">Select</button>
+            </span>
+            </div>
+            </div>
+   </td>
+   <td>
+    <div class="form-group">
+           <label class="Mattlabel" for="nama">product_ref </label>
+           <input type="text" class="form-control"  name="product_ref" id="product_ref"  placeholder=" " readonly/>
+       </div>
+   </td>
+   <td>
+    <div class="form-group">
+           <label class="Mattlabel" for="nama">product_name </label>
+           <input type="text" class="form-control"  name="product_name" id="product_name"  placeholder=" " readonly/>
+       </div>
+   </td>
+   <td>
+    <div class="form-group">
+           <label class="Mattlabel" for="nama">adjustment_date </label>
+           <input type="text" class="form-control"  name="adjustment_date" id="adjustment_date"  placeholder=" "/>
+       </div>
+   </td>
+
+    <td> <div class="form-group">
+        <label class="Mattlabel"for="nama">begin_balance  </label>
+        <input type="text" class="form-control"  id="begin_balance" name="begin_balance" placeholder=" "/>
+    </div></td>
+
+    <td>   <div class="form-group">
+        <label class="Mattlabel"for="nama">adjustment</label>
+        <input type="text" class="form-control"   id="adjustment" name="adjustment" placeholder=" "/>
+    </div>
+</td>
+<td>   <div class="form-group">
+    <label class="Mattlabel"for="nama">location</label>
+    <input type="text" class="form-control"   id="location" name="location" placeholder=" " />
+</div>
+</td>
+<td>   <div class="form-group">
+    <label class="Mattlabel"for="nama">purchase_price</label>
+    <input type="text" class="form-control"   id="purchase_price" name="purchase_price" placeholder=" " />
+</div>
+</td>
+
+</tr>
+<tr>
+</tr>
+</table>
+</div>
+</form>
+<button type="button" class="btn btn-block btn-danger btn-lg" style="width: 25%;margin-left: 550px;" id="add_new_adj"><i class="fa fa-fw fa-plus"></i>  Add New Line</button>  
+
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+//    $('#tambah').click(function()
+//    {
+//     $( "#nama_komponen" ).clone().appendTo('body');
+// }   
+//  );
+
+
+
+</script>
+
+
+</body>
+
+</html>
